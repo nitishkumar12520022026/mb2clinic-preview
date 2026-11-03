@@ -159,6 +159,12 @@ void main(){
   }));
 
   /* ---------- до/после: ползунок двигает границу ---------- */
+  // до/после на телефоне: сначала три работы, остальные по кнопке
+  document.querySelectorAll('.cases__more').forEach(b => b.addEventListener('click', () => {
+    b.previousElementSibling.classList.add('is-open');
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }));
+
   document.querySelectorAll('.ba').forEach(ba => {
     const r = ba.querySelector('input');
     const set = v => { ba.style.setProperty('--x', v + '%'); };

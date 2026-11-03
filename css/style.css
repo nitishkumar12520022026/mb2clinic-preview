@@ -767,3 +767,17 @@ main:has(.where:last-child)+.ftr{margin-top:clamp(40px,6vw,80px)}
 /* заголовки внутренних страниц: каждая строка с новой строки (раньше строки склеивались без пробела) */
 .phero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
 .phero h1 .ln>span{display:inline-block}
+
+/* ---- до/после: 7 работ. На компьютере сетка 3 колонки, две широкие карточки; на телефоне сначала 3, остальные по кнопке ---- */
+.cases{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px}
+.cases .ba{height:clamp(200px,19vw,290px)}
+.case--wide{grid-column:span 2}
+.case figcaption b{font-size:1.3rem}
+.cases__more{display:none;margin:26px auto 0}
+@media (max-width:860px){
+ .cases{grid-template-columns:1fr;gap:26px}
+ .case--wide{grid-column:auto}
+ .cases .ba{height:auto;aspect-ratio:3/2}
+ .cases:not(.is-open) .case:nth-child(n+4){display:none}
+ .cases:not(.is-open)~.cases__more{display:flex}
+}
